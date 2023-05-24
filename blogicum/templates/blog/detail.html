@@ -1,22 +1,22 @@
 {% extends "base.html" %}
   {% block title%}
-    {{ post.location }}.{{ posts_id.date }}
+    {{ post.location }}.{{ post.date }}
   {%endblock%}
 {% block content %}
 <article>
   <ul>
     <li>
-      Место: {{ posts_id.locations }}              
+      Место: {{ post.locations }}              
     </li>
     <li>
-      Дата: {{ posts_id.date }}
+      Дата: {{ post.date }}
     </li>
     <li>
-      Категория: <a href="{% url 'blog:category_posts' posts_id.category %}">{{ posts_id.category }}</a>
+      Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
     </li>
   </ul>         
     <p>
-      {{ posts_id.text }}
+      {{ post.text }}
     </p>          
 </article>                
 {% endblock %}

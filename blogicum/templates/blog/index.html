@@ -22,7 +22,7 @@
     </p>
     <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
   </article>
-  {% if forloop.last %}
+  {% if forloop.revcounter0 %}
   {% endif %}
 {% endfor %}
 {% endblock %}

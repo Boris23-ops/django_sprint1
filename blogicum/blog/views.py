@@ -1,5 +1,5 @@
+from django.http import Http404
 from django.shortcuts import render
-
 
 posts = [
     {
@@ -46,26 +46,30 @@ posts = [
 
 
 def index(request):
-    template = 'blog/index.html'
+    '''Функция главной страници'''
+    templates = 'blog/index.html'
     posts_reversed = reversed(posts)
     context = {
         'posts': posts_reversed,
     }
-    return render(request, template, context)
+    return render(request, templates, context)
 
 
-def post_detail(request, id):
-    template = 'blog/detail.html'
-    posts_id = posts[id]
-    context = {
-        'post': posts_id,
-    }
-    return render(request, template, context)
+def post_detail(request, post_id):
+    '''Функция отвечает за посты'''
+    try:
+        context_2 = {post['id']: post for post in posts}
+        context = {
+            'post': context_2[post_id],
+        }
+    except KeyError:
+        raise Http404("Poll does not exist")
+    return render(request, 'blog/detail.html', context)
 
 
 def category_posts(request, category_slug):
-    template = 'blog/category.html'
+    '''Функция отвечает за Публикации в категории'''
     context = {
         'category_slug': category_slug,
     }
-    return render(request, template, context)
+    return render(request, 'blog/category.html', context)

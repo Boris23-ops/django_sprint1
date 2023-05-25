@@ -1,10 +1,12 @@
 from django.urls import path
-from pages import views
+from django.views.generic import TemplateView
 from pages.apps import PagesConfig
 
 app_name = PagesConfig.name
 
 urlpatterns = [
-    path('about/', views.about, name='about'),
-    path('rules/', views.rules, name='rules'),
+    path('about/', TemplateView.as_view(template_name='pages/about.html'),
+         name='about'),
+    path('rules/', TemplateView.as_view(template_name='pages/rules.html'),
+         name='rules'),
 ]

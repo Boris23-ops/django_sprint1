@@ -8,19 +8,20 @@
       </a>        
       <ul class="nav  nav-pills">
         <li class="nav-item">  
-            <a class="nav-link {% if '/' == request.path %}active{% endif %}" href="{% url 'blog:index' %}">
-              Лента записей
-            </a>
+          <a class="nav-link {% if '/' == request.path %}active{% endif %}" href="{% url 'blog:index' %}">
+          Лента записей
+          </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="{% url 'pages:about' %}">
-               О проекте
-            </a>
+          <a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="{% url 'pages:about' %}">
+           О проекте
+          </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {% if 'rules' in request.path %}active{% endif %}" href="{% url 'pages:rules' %}">
-              Наши правила
-            </a>
+          <a class="nav-link {% if 'rules' in request.path %}active{% endif %}" href="{% url 'pages:rules' %}">
+          Наши правила
+          </a>
+        </li>
       </ul>      
     </div>
   </nav> 

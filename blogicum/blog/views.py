@@ -58,13 +58,13 @@ def index(request):
 def post_detail(request, post_id):
     '''Функция отвечает за посты'''
     try:
-        context_2 = {post['id']: post for post in posts}
+        base_posts = {post['id']: post for post in posts}
         context = {
-            'post': context_2[post_id],
+            'post': base_posts[post_id],
         }
+        return render(request, 'blog/detail.html', context)
     except KeyError:
-        raise Http404("Poll does not exist")
-    return render(request, 'blog/detail.html', context)
+        raise Http404(f'{post_id} поста еще нет!')
 
 
 def category_posts(request, category_slug):
